@@ -1,13 +1,16 @@
 import numpy as np
 from scipy.stats import gmean
 
+#eps is used for numerical stability.
 def clr(a1):
     gm =  gmean(a1)
-    return np.log(a1 / gm + 1e-8)
+    eps = 1e-8
+    return np.log(a1 / gm + eps)
 
 def alr(a1):
     x_d = a1[-1]
-    return np.log(a1[0:len(a1)-1] / x_d + 1e-8)
+    eps = 1e-8
+    return np.log(a1[0:len(a1)-1] / x_d + eps)
 
 def phi(ai,aj):
     return np.var(ai-aj) / np.var(ai)
